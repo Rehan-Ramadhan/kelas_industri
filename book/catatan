@@ -1,0 +1,22 @@
+buat project/folder: composer create-project laravel/laravel namafolder --prefer-dist
+memakai folder: cd namafolder
+menjalankan: php artisan serve (localhost:8000)
+
+buat migrate: php artisan make:migration create_namatable_table
+kirim kerangka table (hanya boleh 1x untuk setiap 1 database): php artisan migrate
+kirim ulang kerangka table (hapus table lama): php artisan migrate:fresh
+migrate 1 file tertentu: php artisan migrate --path=/database/migrations/namamigration.php
+membuat seeder: php artisan make:seeder NamaSeederTableSeeder
+kirim seeder: php artisan db:seed
+kirim ulang kerangka sekaligus seeder: php artisan migrate:fresh --seed
+
+membuat model sekaligus migration: php artisan make:model NamaModel -m
+membuat model sekaligus seeder: php artisan make:model NamaModel -s
+membuat model sekaligus controller: php artisan make:model NamaModel -c
+membuat model sekaligus controller, migration dan resource: php artisan make:model NamaModel -mcr
+
+cara menampilkan seeder sementara di cmd: php artisan tinker
+terus: App\Models\NamaModel::all();
+
+cara mendownload package laravel/ui atau authentication: composer require laravel/ui
+lalu migrate fresh

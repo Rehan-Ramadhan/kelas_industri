@@ -10,6 +10,6 @@ class Post extends Model
     use HasFactory;
 
     // kolom/field yang boleh diisi secara massal
-    protected $fillable = ['id', 'title', 'content'];
+    protected $fillable = ['id', 'title', 'cover', 'content'];
     public $timestamps = true;
 }

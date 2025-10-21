@@ -16,12 +16,13 @@ return new class extends Migration
             $table->id();
             $table->string('nama_lengkap');
             $table->string('jenis_kelamin');
-            $table->date('tanggal_lahir');
             $table->string('tempat_lahir');
+            $table->date('tanggal_lahir');
             $table->string('agama');
             $table->text('alamat');
             $table->string('telepon');
             $table->string('email')->unique();
+            $table->string('foto_profil');
             $table->timestamps();
         });
     }

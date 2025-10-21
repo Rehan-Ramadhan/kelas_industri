@@ -2,16 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 
-class stokController extends Controller
+class StokController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $products = Product::all();
+        return view('halaman_stock', [
+            'products' => $products,
+            'editProduct' => null,
+        ]);
     }
 
     /**
@@ -43,7 +48,10 @@ class stokController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $products = Product::all();
+        $editProduct = Product::findOrFail($id);
+
+        return view('halaman_stock', compact('products', 'editProduct'));
     }
 
     /**
@@ -51,7 +59,15 @@ class stokController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'price' => 'required|numeric',
+            'stock' => 'required|numeric',
+        ]);
+
+        $product = Product::findOrFail($id);
+        $product->update($request->all());
     }
 
     /**
@@ -59,6 +75,7 @@ class stokController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $product = Product::findOrFail($id);
+        $product->delete();
     }
 }

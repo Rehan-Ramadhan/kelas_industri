@@ -11,11 +11,12 @@ class Biodata extends Model
        protected $fillable = [
         'nama_lengkap',
         'jenis_kelamin',
-        'tanggal_lahir',
         'tempat_lahir',
+        'tanggal_lahir',
         'agama',
         'alamat',
         'telepon',
         'email',
+        'foto_profil',
     ];
 }

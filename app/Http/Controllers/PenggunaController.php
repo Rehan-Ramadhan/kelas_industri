@@ -7,18 +7,13 @@ use Illuminate\Http\Request;
 
 class PenggunaController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
         $pengguna = Pengguna::all();
-        // return view('pengguna.index', compact('pengguna'));
+        return view('pengguna.index', compact('pengguna'));
     }
 
     /**
@@ -26,7 +21,7 @@ class PenggunaController extends Controller
      */
     public function create()
     {
-        // return view('pengguna.create');
+        return view('pengguna.create');
     }
 
     /**
@@ -34,13 +29,16 @@ class PenggunaController extends Controller
      */
     public function store(Request $request)
     {
-        $pengguna = new Pengguna();
-        $pengguna->name = $request->input('name');
+        $request->validate([
+            'name' => 'required|string|max:255',], [
+            'name.required' => 'Nama tidak boleh kosong',]);
 
-        $pengguna->save();
+            $pengguna = new Pengguna;
+            $pengguna->name = $request->name;
+            $pengguna->save();
 
-        session()->flash('success', 'Pengguna berhasil ditambahkan.');
-        // return redirect()->route('pengguna.index');
+            session()->flash('success', 'Pengguna berhasil ditambahkan');
+            return redirect()->route('pengguna.index');
     }
 
     /**
@@ -49,7 +47,7 @@ class PenggunaController extends Controller
     public function show(Pengguna $pengguna)
     {
         $pengguna = Pengguna::find($pengguna->id);
-        // return view('pengguna.show', compact('pengguna'));
+        return view('pengguna.show', compact('pengguna'));
     }
 
     /**
@@ -58,7 +56,7 @@ class PenggunaController extends Controller
     public function edit(Pengguna $pengguna)
     {
         $pengguna = Pengguna::find($pengguna->id);
-        // return view('pengguna.edit', compact('pengguna'));
+        return view('pengguna.edit', compact('pengguna'));
     }
 
     /**
@@ -68,11 +66,10 @@ class PenggunaController extends Controller
     {
         $pengguna = Pengguna::find($pengguna->id);
         $pengguna->name = $request->input('name');
-
         $pengguna->save();
 
         session()->flash('success', 'Pengguna berhasil diupdate.');
-        // return redirect()->route('pengguna.index');
+        return redirect()->route('pengguna.index');
     }
 
     /**
@@ -84,6 +81,6 @@ class PenggunaController extends Controller
         $pengguna->delete();
 
         session()->flash('success', 'Pengguna berhasil dihapus.');
-        // return redirect()->route('pengguna.index');
+        return redirect()->route('pengguna.index');
     }
 }

@@ -49,7 +49,6 @@ class PostsController extends Controller
 
         $post = new Post();
         $post->title = $request->title;
-        $post->content = $request->content;
         // $post->content = $request->content;
 
         if ($request->hasFile('cover')) {
@@ -91,7 +90,7 @@ class PostsController extends Controller
     {
         $post = Post::findOrFail($id);
         $post->title = $request->title;
-        $post->content = $request->content;
+        // $post->content = $request->content;
 
         if ($request->hasFile('cover')) {
             $filePath = public_path('images/post/' . $post->cover);

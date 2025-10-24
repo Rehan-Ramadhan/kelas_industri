@@ -1,16 +1,23 @@
 <?php
 
+use App\Http\Controllers\KelasController;
+use App\Http\Controllers\MuridController;
 use App\Models\Mahasiswa;
 use App\Models\Post;
 use App\Models\Siswa;
 use App\Models\Biodata;
+use App\Models\Wali;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\BiodatasController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PenggunaController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RelasiController;
-use App\Models\Wali;
+use App\Http\Controllers\TeleponController;
+use App\Http\Controllers\BarangController;
+use App\Http\Controllers\PembeliController;
+use App\Http\Controllers\TransaksiController;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     return view('welcome');
@@ -240,8 +247,6 @@ Route::resource('post', PostsController::class);
 Route::resource('biodata', BiodatasController::class);
 Route::resource('pengguna', PenggunaController::class);
 
-Route::get('/one-to-one', [RelasiController::class, 'oneToOne']);
-
 // Route::get('/wali-ke-mahasiswa', function () {
 //     $wali = Wali::with('mahasiswa')->first();
 //     return "{$wali->nama} adalah wali dari {$wali->mahasiswa->nama}";
@@ -257,3 +262,15 @@ Route::get('/one-to-many', [RelasiController::class, 'oneToMany']);
 //     $mhs = Mahasiswa::where('nim', '123456')->first();
 //     return "{$mhs->nama} dibimbing oleh {$mhs->dosen->nama}";
 // });
+
+Route::get('/many-to-many', [RelasiController::class, 'manyToMany']);
+
+Route::get('/one-to-one', [RelasiController::class, 'oneToOne']);
+Route::resource('telepon', TeleponController::class);
+
+Route::resource('kelas', KelasController::class);
+Route::resource('murid', MuridController::class);
+
+Route::resource('barang', BarangController::class);
+Route::resource('pembeli', PembeliController::class);
+Route::resource('transaksi', TransaksiController::class);

@@ -36,7 +36,7 @@ class BiodatasController extends Controller
     public function store(Request $request)
     {
         $request->validate(
-            [
+    [
                 'nama_lengkap' => 'required|string|max:255',
                 'jenis_kelamin' => 'required|string|in:Laki-laki,Perempuan',
                 'tanggal_lahir' => 'required|date',
@@ -47,7 +47,7 @@ class BiodatasController extends Controller
                 'email' => 'required|email|max:255|unique:biodatas,email',
 
             ],
-            [
+    [
                 'nama_lengkap.required' => 'Wajib diisi',
                 'jenis_kelamin.required' => 'Wajib diisi',
                 'tanggal_lahir.required' => 'Wajib diisi',

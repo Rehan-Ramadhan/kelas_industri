@@ -13,15 +13,15 @@ class PostsTableSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table("posts")->insert([
-            [
-                "title"=> "Tips Cepat Pintar",
-                "content"=> "lorem ipsum",
-            ],
-            [
-                "title"=> "Membangun Visi Misi Sukses",
-                "content"=> "lorem ipsum",
-            ],
-        ]);
+        // DB::table("posts")->insert([
+        //     [
+        //         "title"=> "Tips Cepat Pintar",
+        //         "content"=> "lorem ipsum",
+        //     ],
+        //     [
+        //         "title"=> "Membangun Visi Misi Sukses",
+        //         "content"=> "lorem ipsum",
+        //     ],
+        // ]);
     }
 }

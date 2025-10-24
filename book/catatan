@@ -10,10 +10,10 @@ membuat seeder: php artisan make:seeder NamaSeederTableSeeder
 kirim seeder: php artisan db:seed
 kirim ulang kerangka sekaligus seeder: php artisan migrate:fresh --seed
 
-membuat model sekaligus migration: php artisan make:model NamaModel -m
-membuat model sekaligus seeder: php artisan make:model NamaModel -s
-membuat model sekaligus controller: php artisan make:model NamaModel -c
-membuat model sekaligus controller, migration dan resource: php artisan make:model NamaModel -mcr
+membuat model sekaligus migration: php artisan make:model Nama -m
+membuat model sekaligus seeder: php artisan make:model Nama -s
+membuat model sekaligus controller: php artisan make:model Nama -c
+membuat model sekaligus controller, migration dan resource: php artisan make:model Nama -mcr
 membuat controller: php artisan make:controller NamaController
 membuat controller resource: php artisan make:controller NamaController -r
 
